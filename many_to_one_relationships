@@ -1,0 +1,64 @@
+from django.db import models    ###### this is many to one relationship use foreignkey to make relationships
+
+class Manufacturer (models.MOdel):     #### manufacturer  can make multiple cars or multiple model cars like (mahindra has scorpio,bolero,xuvoo,thar) but manufacturer is one 
+    name=models.CharField(max_length=100)
+class Car(models.Model):
+    manufacturer=models.ForeignKey(Manufacturer,on_delete=models.CASCADE)   ####   here the variable name may be lower case of model that has to be in relationships(suggested)not must
+
+
+###BELOW MENTIONED ARE EXAMPLE OF ON_DELETE=MODELS.CASCADE
+
+          #######[models.CASCADE: This means that when the referenced object is deleted, also delete the objects that have a foreign key pointing to it. In other words, if you have a model with a ForeignKey to another model, and the referenced object is deleted, all related objects will also be deleted.
+For example:
+
+
+class Author(models.Model):
+    name = models.CharField(max_length=100)
+
+#class Book(models.Model):
+    title = models.CharField(max_length=100)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+In this example, if you delete an Author, all Book objects associated with that author will also be deleted.
+
+Other available options for on_delete include:
+
+models.PROTECT: Prevent deletion of the referenced object by raising a ProtectedError.
+models.SET_NULL: Set the foreign key value to NULL when the referenced object is deleted.
+models.SET_DEFAULT: Set the foreign key value to its default when the referenced object is deleted.
+models.SET(): Set the foreign key value to the value passed to the SET() method.
+models.DO_NOTHING: Do nothing when the referenced object is deleted. This can lead to database integrity issues if not handled correctly.
+Choosing the appropriate on_delete behavior depends on the specific requirements of your application and how you want to manage the relationships between your models. Always consider the implications of your choice on data integrity and application logic.]
+
+
+
+
+
+
+Database Management:
+
+In the context of databases, "cascade" often refers to the behavior of certain operations, particularly in relation to foreign keys.
+For instance, in a relational database, if a record in a parent table is deleted or updated, "cascading" can be set up to automatically delete or update related records in child tables.
+Water Flow:
+
+
+
+In software engineering, "cascade" can refer to a series of events or method calls that occur as a result of an initial action or event.
+For example, in GUI (Graphical User Interface) programming, a "cascade" layout might arrange elements in a way where they flow down or across the screen.
+Cascading Style Sheets (CSS):
+
+In web development, "cascading" is a term used in CSS to describe how styles are applied to HTML elements. Styles can be inherited, overridden, or combined in a cascading manner.
+Project Management:
+
+In project management, "cascade" can refer to a method of passing information or instructions down through a hierarchy of team members.
+Waterfall Model:
+
+In software development, the "Waterfall Model" is a linear and sequential approach to project management, where each phase must be completed before the next begins. It's called "waterfall" because progress flows steadily downwards, like a waterfall.
+General Meaning:
+
+In a general sense, "cascade" can refer to any process where one action leads to a series of interconnected or dependent actions.
+The meaning of "cascade" can vary depending on the context in which it's used. It generally implies a flow or progression of events or actions triggered by an initial action or condition.
+
+
+
+
+
